@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExcelFormatTypeEditForGraphDisplay.Class;
+using System;
 
 namespace ExcelFormatTypeEditForGraphDisplay
 {
@@ -6,12 +7,9 @@ namespace ExcelFormatTypeEditForGraphDisplay
     {
         static void Main(string[] args)
         {
-            //FileManager.ReadDataFromFile();
-            //FileManager.ManagerFileDataInProvinceFile();
-            // FileManager.ManageFileDataInSubProvinceFile();
-            // FileManager.ManageFileDataInSubDistrictFile();
-            //FileManager.ManageFileDataInRegionFile();
-            _8Dimension59Variable.ManageFileDataIn8DimensionAnd59VariableFile();
+            SubDistrictFileManager.ManageFileDataInSubDistrictFile();
+
+           // _8Dimension59Variable.ManageFileDataIn8DimensionAnd59VariableFile();
         }
     }
 }

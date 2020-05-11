@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace ExcelFormatTypeEditForGraphDisplay
@@ -10,7 +11,7 @@ namespace ExcelFormatTypeEditForGraphDisplay
     {
         public static void WriterCRVFile<T>(this List<T> records, string filename)
         {
-            var filePath = $@"C:\Users\Mana PC\Documents\Programming\C#\ExcelFormatTypeEditForGraphDisplay\Export\{filename}.csv";
+            var filePath = $@"C:\Users\Ar'leng Chalermchai\Documents\Programming\C#\ExcelFormatTypeEditForGraphDisplay\Export\{filename}.csv";
             using (var writer = new StreamWriter(filePath))
             using (CsvWriter csv = new CsvWriter(writer))
             {
@@ -24,7 +25,7 @@ namespace ExcelFormatTypeEditForGraphDisplay
             using (StreamReader rd = new StreamReader(filePath, Encoding.UTF8))
             {
                 var readLine = rd.ReadToEnd();
-                rawData = readLine.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList().Skip(1);
+                rawData = readLine.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
             return rawData;
         }

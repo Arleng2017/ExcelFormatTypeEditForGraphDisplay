@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ExcelFormatTypeEditForGraphDisplay.Class
 {
-    class SubDistrictFileManager
+    public class SubDistrictFileManager
     {
 
         /// <summary>
@@ -14,13 +14,13 @@ namespace ExcelFormatTypeEditForGraphDisplay.Class
         /// </summary>
         public static void ManageFileDataInSubDistrictFile()
         {
-            var filepath = @"C:\Users\Mana PC\Documents\Programming\C#\ExcelFormatTypeEditForGraphDisplay\Import\Sub-district.csv";
+            var filepath = @"C:\Users\Ar'leng Chalermchai\Documents\Programming\C#\ExcelFormatTypeEditForGraphDisplay\Import\cwt\CWT59.csv";
             var data = filepath.ReadData();
-            var subDistrictDataList = GetSubDistrictDataList(data, 155, 23);
-            subDistrictDataList.WriterCRVFile("SubDistrict-59Variable-Purple");
+            var subDistrictDataList = GetSubDistrictDataList(data);
+            subDistrictDataList.WriterCRVFile("CWT59");
         }
 
-        static List<SubDistrict> GetSubDistrictDataList(IEnumerable<string> data, int start, int end)
+        static List<SubDistrict> GetSubDistrictDataList(IEnumerable<string> data)
         {
             var subDistrictDataList = new List<SubDistrict>();
             var headerList = new List<string>();
@@ -34,29 +34,37 @@ namespace ExcelFormatTypeEditForGraphDisplay.Class
                 {
                     var dataList = new List<string>();
                     dataList.AddRange(data.ElementAt(i).Split(","));
-                    subDistrictDataList.AddRange(InputDataToSubDistrictFormat(headerList, dataList, start, end));
+                    subDistrictDataList.AddRange(InputDataToSubDistrictFormat(headerList, dataList));
                 }
             }
             return subDistrictDataList;
         }
 
-        static List<SubDistrict> InputDataToSubDistrictFormat(List<string> headerList, List<string> dataList, int start, int end)
+        static List<SubDistrict> InputDataToSubDistrictFormat(List<string> headerList, List<string> dataList)
         {
             var subDistrictDataList = new List<SubDistrict>();
-            for (var i = 4; i < headerList.Count(); i++)
+            for (var i = 2; i < headerList.Count(); i++)
             {
                 subDistrictDataList.Add(
                     new SubDistrict
                     {
-                        SubDistrictName = dataList.ElementAt(0),
-                        DistrictName = dataList.ElementAt(1),
-                        ProvinceName = dataList.ElementAt(2),
-                        RegionName = dataList.ElementAt(3),
+                        //SubRiver = dataList.ElementAt(0),
+                        //River = dataList.ElementAt(1),
+                        //RegAreaCode = dataList.ElementAt(0),
+                        //AreaCode = dataList.ElementAt(1),
+                        //SubDistrictName = dataList.ElementAt(2),
+                        //DistrictName = dataList.ElementAt(0),
+                        //ProvinceName = dataList.ElementAt(0),
+                        
+                        
+                        Reg = dataList.ElementAt(0),
+                        ProvinceName = dataList.ElementAt(1),
                         HeaderName = headerList.ElementAt(i),
                         Data = dataList.ElementAt(i)
-                    });
+                    }); ;
             }
-            return subDistrictDataList.Skip(start).SkipLast(end).ToList();
+            var x = subDistrictDataList.SkipLast(0).ToList();
+            return subDistrictDataList.SkipLast(0).ToList();
         }
 
     }

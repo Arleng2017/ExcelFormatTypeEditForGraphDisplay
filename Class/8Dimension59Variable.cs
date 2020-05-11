@@ -14,9 +14,9 @@ namespace ExcelFormatTypeEditForGraphDisplay
         /// </summary>
         public static void ManageFileDataIn8DimensionAnd59VariableFile()
         {
-            var filepath = @"C:\Users\Mana PC\Documents\Programming\C#\ExcelFormatTypeEditForGraphDisplay\Import\Sub-district.csv";
+            var filepath = @"C:\Users\Ar'leng Chalermchai\Documents\Programming\C#\ExcelFormatTypeEditForGraphDisplay\Import\ลุ่มน้ำ.csv";
             var data = filepath.ReadData();
-            SubData(data).WriterCRVFile("8DimensionAnd59VariableAddressConcat");
+            SubData(data).WriterCRVFile("river8-59");
         }
 
         static List<_8Dimension59VariableAdressConcatExportModel> SubData(IEnumerable<string> data)
@@ -58,7 +58,7 @@ namespace ExcelFormatTypeEditForGraphDisplay
                 else { dimensionHeader = _8DimensionDataList.ElementAt(7).Header; dimenstionData = _8DimensionDataList.ElementAt(7).Data; }
                 data.Add(new _8Dimension59VariableAdressConcatExportModel
                 {
-                    Address = $"({dataList.ElementAt(2)},{dataList.ElementAt(1)}),{dataList.ElementAt(0)}",
+                    Address = $"{dataList.ElementAt(1)},{dataList.ElementAt(0)}",
                     _8DimensionHeader = dimensionHeader,
                     _8DimensionValue = dimenstionData,
                     _59VariableHeader = _59VariableDatalist.ElementAt(i).Header,
@@ -80,19 +80,8 @@ namespace ExcelFormatTypeEditForGraphDisplay
                         Data = dataList.ElementAt(i)
                     });
             }
-            var data = rawData.Skip(220).SkipLast(1).ToList();
-            data.RemoveAt(18);
-            data.RemoveAt(17);
-            data.RemoveAt(16);
-            data.RemoveAt(15);
-            data.RemoveAt(14);
-            data.RemoveAt(13);
-            data.RemoveAt(12);
-            data.RemoveAt(9);
-            data.RemoveAt(8);
-            data.RemoveAt(4);
-            data.RemoveAt(3);
-            data.RemoveAt(2);
+            var data = rawData.Skip(63).SkipLast(0).ToList();
+           
             return data;
         }
 
@@ -108,10 +97,12 @@ namespace ExcelFormatTypeEditForGraphDisplay
                         Data = dataList.ElementAt(i)
                     });
             }
-
-            return rawData.Skip(159).SkipLast(23).ToList();
+            var x = rawData.Skip(2).SkipLast(11).ToList();
+            return rawData.Skip(2).SkipLast(11).ToList();
         }
 
 
     }
 }
+
+
